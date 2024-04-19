@@ -18,39 +18,28 @@ const SearchInput = () => {
 		// TODO : EDIT THIS
 		const conversation = users.find((c) => c.fullName.toLowerCase().includes(search.toLowerCase()));
 
-		if (conversation) {
-			setSelectedConversation(conversation);
-			setSearch("");
-		} else toast.error("No such user found!");
-	};
-	return (
-		<form onSubmit={handleSubmit} className='flex items-center gap-2'>
-			<input
-				type='text'
-				placeholder='Search…'
-				className='input input-bordered rounded-full'
-				value={search}
-				onChange={(e) => setSearch(e.target.value)}
-			/>
-			<button type='submit' className='btn btn-circle bg-sky-500 text-white'>
-				<IoSearchSharp className='w-6 h-6 outline-none' />
-			</button>
-		</form>
-	);
+    if (conversation) {
+      setSelectedConversation(conversation);
+      setSearch("");
+    } else toast.error("No such user found!");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="flex items-center gap-2">
+      <input
+        type="text"
+        placeholder="Search…"
+        className="input input-bordered rounded-full w-full dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <button
+        type="submit"
+        className="btn btn-circle bg-sky-500 text-white hover:bg-sky-600 dark:bg-sky-700 dark:hover:bg-sky-800"
+      >
+        <IoSearchSharp className="w-6 h-6" />
+      </button>
+    </form>
+  );
 };
 export default SearchInput;
-
-// STARTER CODE SNIPPET
-// import { IoSearchSharp } from "react-icons/io5";
-
-// const SearchInput = () => {
-// 	return (
-// 		<form className='flex items-center gap-2'>
-// 			<input type='text' placeholder='Search…' className='input input-bordered rounded-full' />
-// 			<button type='submit' className='btn btn-circle bg-sky-500 text-white'>
-// 				<IoSearchSharp className='w-6 h-6 outline-none' />
-// 			</button>
-// 		</form>
-// 	);
-// };
-// export default SearchInput;
