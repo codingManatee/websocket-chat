@@ -9,7 +9,15 @@ const ThemeToggle = () => {
 
   useEffect(() => {
     // Apply the dark class to the root of the document
-    document.documentElement.classList.toggle("dark", darkMode);
+    const root = document.documentElement;
+    root.classList.toggle("dark", darkMode);
+
+    // Apply the background image based on the theme
+    if (darkMode) {
+      root.style.setProperty("--bg-image", "url(/dark.png)");
+    } else {
+      root.style.setProperty("--bg-image", "url(/bg.png)");
+    }
   }, [darkMode]);
 
   const toggleTheme = () => {
