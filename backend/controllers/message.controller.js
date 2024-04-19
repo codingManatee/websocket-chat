@@ -22,16 +22,20 @@ export const sendMessage = async (req, res) => {
 
     await Promise.all([conversation.save(), newMessage.save()]);
 
+    const populatedMessage = await Message.findById(newMessage._id).populate(
+      "senderId"
+    );
+
     conversation.participants.forEach((participant) => {
       if (participant !== senderId) {
         const socketId = getReceiverSocketId(participant);
         if (socketId) {
-          io.to(socketId).emit("newMessage", newMessage);
+          io.to(socketId).emit("newMessage", populatedMessage);
         }
       }
     });
 
-    res.status(201).json(newMessage);
+    res.status(201).json(populatedMessage);
   } catch (error) {
     console.log("Error in sendMessage controller: ", error.message);
     res.status(500).json({ error: "Internal server error" });
@@ -43,8 +47,13 @@ export const getMessages = async (req, res) => {
     const { id: conversationId } = req.params;
     const conversation = await Conversation.findOne({
       _id: conversationId,
-    }).populate("messages");
-
+    }).populate({
+      path: "messages",
+      populate: {
+        path: "senderId",
+        model: "User",
+      },
+    });
     if (!conversation) {
       return res.status(404).json({ error: "Conversation not found" });
     }
