@@ -20,7 +20,7 @@ const ThemeToggle = () => {
   return (
     <div className="fixed top-0 right-0 p-4">
       <div className="flex items-center">
-        <span className="text-sm font-medium mr-2">
+        <span className="text-sm font-medium mr-2 dark:text-gray-200">
           {darkMode ? "Dark Mode" : "Light Mode"}
         </span>
         <button
