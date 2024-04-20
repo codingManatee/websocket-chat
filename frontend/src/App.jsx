@@ -5,7 +5,6 @@ import Login from "./pages/login/Login";
 import SignUp from "./pages/signup/SignUp";
 import { Toaster } from "react-hot-toast";
 import { useAuthContext } from "./context/AuthContext";
-import MessageContainer from "./components/messages/MessageContainer";
 import ThemeToggle from "./components/theme/ThemeToggle";
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
         />
         <Route
           path="/room/:conversationId"
-          element={authUser ? <MessageContainer /> : <Navigate to="/login" />}
+          element={authUser ? <Home /> : <Navigate to="/login" />}
         />
       </Routes>
       <Toaster />

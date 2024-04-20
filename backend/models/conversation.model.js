@@ -17,6 +17,12 @@ const conversationSchema = new mongoose.Schema(
     ],
     name: {
       type: String,
+      default: "",
+    },
+    isPrivateRoom: {
+      type: Boolean,
+      required: true,
+      default: false,
     },
   },
   { timestamps: true }
