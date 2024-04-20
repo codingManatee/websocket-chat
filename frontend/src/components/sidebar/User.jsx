@@ -10,11 +10,7 @@ const User = ({ user, lastIdx, emoji }) => {
 
 	const handleSelectUser = async () => {
 		try {
-			const response = await axios.get(`/api/messages/room/${user._id}`, {
-				headers: {
-					Authorization: `Bearer YOUR_TOKEN_HERE`, // Replace YOUR_TOKEN_HERE with the actual token
-				}
-			});
+			const response = await axios.get(`/api/rooms/${user._id}`)
 			if (response.status === 200) {
 				navigate(`/room/${response.data.conversationId}`);
 			} else {

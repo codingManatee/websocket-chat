@@ -15,7 +15,7 @@ const MessageContainer = () => {
         const fetchConversationDetails = async () => {
             if (conversationId) {
                 try {
-                    const response = await axios.get(`/api/messages/room/info/${conversationId}`);
+                    const response = await axios.get(`/api/rooms/info/${conversationId}`);
                     setSelectedConversation(response.data.conversation);
                 } catch (error) {
                     console.error('Error fetching conversation details:', error);
