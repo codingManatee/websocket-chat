@@ -136,7 +136,7 @@ export const getAllRooms = async (req, res) => {
     const conversations = await Conversation.aggregate([
       { $match: { participants: userId } },
       { $addFields: { participantCount: { $size: "$participants" } } },
-      { $match: { participantCount: { $gt: 2 } } },
+      { $match: { participantCount: { $gt: 1 } } },
     ]);
 
     res.status(200).json(conversations);
