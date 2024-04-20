@@ -1,12 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useSocketContext } from "../../context/SocketContext";
-import useConversation from "../../zustand/useConversation";
-import useGetUsers from "../../hooks/useGetUsers";
 import axios from "axios";
 
 const User = ({ user, lastIdx, emoji }) => {
   const { onlineUsers } = useSocketContext();
-  const { users } = useGetUsers();
-  const { setSelectedConversation } = useConversation();
+  const navigate = useNavigate();
   const isOnline = onlineUsers.includes(user._id);
 
   const handleSelectUser = async () => {
@@ -15,11 +13,9 @@ const User = ({ user, lastIdx, emoji }) => {
       if (response.status === 200) {
         const conversation_data = await axios.get(`/api/rooms/info/${response.data.conversationId}`);
         if (conversation_data) {
-          setSelectedConversation(conversation_data.data.conversation);
+          navigate(`/room/${conversation_data.data.conversation._id}`);
         }
-      } else {
-        console.error("Failed to get the conversation ID");
-      }
+      } 
     } catch (error) {
       console.error("Error fetching private room:", error);
     }
