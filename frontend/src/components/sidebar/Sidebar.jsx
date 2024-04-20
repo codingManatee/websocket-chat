@@ -1,12 +1,13 @@
 import LogoutButton from "./LogoutButton";
 import SearchInput from "./SearchInput";
 import Users from "./Users";
+import Profile from "./Profile"
 
 const Sidebar = () => {
 	return (
-		<div className='border-r border-slate-500 p-4 flex flex-col'>
-			<SearchInput />
-			<div className='divider px-3'></div>
+		<div className='border-r border-slate-500 p-4 flex flex-col max-w-[350px]'>
+			<Profile/>
+			<div className='divider'></div>
 			<Users />
 			<LogoutButton />
 		</div>

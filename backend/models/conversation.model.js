@@ -17,7 +17,6 @@ const conversationSchema = new mongoose.Schema(
     ],
     name: {
       type: String,
-      default: "No chat name",
     },
   },
   { timestamps: true }

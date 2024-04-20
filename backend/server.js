@@ -10,6 +10,7 @@ import userRoutes from "./routes/user.routes.js";
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import { app, server } from "./socket/socket.js";
+import roomRoutes from "./routes/room.routes.js";
 
 const PORT = process.env.PORT || 5001;
 
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/rooms", roomRoutes);
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
