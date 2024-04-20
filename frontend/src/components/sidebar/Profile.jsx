@@ -4,6 +4,7 @@ const Profile = () => {
   const { authUser } = useAuthContext();
   return (
     <>
+      <div className="p-2 font-bold text-gray-200 text-2xl">Profile</div>
       <div
         className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer`}
       >
