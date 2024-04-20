@@ -13,12 +13,9 @@ const User = ({ user, lastIdx, emoji }) => {
     try {
       const response = await axios.get(`/api/rooms/${user._id}`);
       if (response.status === 200) {
-		console.log(user.fullName)
-        const conversation = users.find((c) =>
-          c.fullName.toLowerCase().includes(user.fullName.toLowerCase())
-        );
-        if (conversation) {
-          setSelectedConversation(conversation);
+        const conversation_data = await axios.get(`/api/rooms/info/${response.data.conversationId}`);
+        if (conversation_data) {
+          setSelectedConversation(conversation_data.data.conversation);
         }
       } else {
         console.error("Failed to get the conversation ID");
