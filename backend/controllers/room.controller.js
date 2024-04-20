@@ -70,7 +70,7 @@ export const getMessages = async (req, res) => {
 export const createRoom = async (req, res) => {
   try {
     const userId = req.user._id;
-    const { participants } = req.params;
+    const { participants } = req.body;
     const conversation = await Conversation.create({
       participants: [userId, ...participants],
     });
