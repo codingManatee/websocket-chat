@@ -23,7 +23,7 @@ export const getPrivateRoom = async (req, res) => {
 
     // Find conversation with only these two users
     let conversation = await Conversation.findOne({
-      participants: { $all: [userId, targetUserId] },
+      participants: { $all: [userId, targetUserId], $size: 2 },
     });
 
     // If conversation doesn't exist, create a new one
