@@ -98,7 +98,7 @@ export const joinRoom = async (req, res) => {
     } else {
       // Add user to the room's participants list if they are not already a participant
       const updatedRoom = await Conversation.findByIdAndUpdate(
-        roomId,
+        conversationId,
         { $addToSet: { participants: userId } },
         { new: true }
       );
