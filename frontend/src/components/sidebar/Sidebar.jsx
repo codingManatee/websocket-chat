@@ -1,5 +1,4 @@
 import LogoutButton from "./LogoutButton";
-import SearchInput from "./SearchInput";
 import Users from "./Users";
 import Profile from "./Profile"
 

@@ -6,7 +6,7 @@ const Conversation = ({conversation, lastIdx, emoji }) => {
 	const handleSelectConversation = async () => {
 		navigate(`/room/${conversation._id}`);
 	};
-
+	console.log(conversation)
 	return (
 		<>
 			<div
