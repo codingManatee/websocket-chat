@@ -1,12 +1,21 @@
+import axios from 'axios';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const Conversation = ({conversation, lastIdx, emoji }) => {
     
 	const navigate = useNavigate();
 	const handleSelectConversation = async () => {
-		navigate(`/room/${conversation._id}`);
+		try {
+			const response = await axios.post(`/api/rooms/join/${conversation._id}`);
+			if (response.status === 200) {
+				navigate(`/room/${response.data.conversationId}`);
+			}
+		} catch (error) {
+			toast.error("Error fetching private room:", error);
+		}
 	};
-	console.log(conversation)
+
 	return (
 		<>
 			<div

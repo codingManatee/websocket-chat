@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSocketContext } from "../../context/SocketContext";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const User = ({ user, lastIdx, emoji }) => {
   const { onlineUsers } = useSocketContext();
@@ -9,15 +10,12 @@ const User = ({ user, lastIdx, emoji }) => {
 
   const handleSelectUser = async () => {
     try {
-      const response = await axios.get(`/api/rooms/${user._id}`);
+      const response = await axios.post(`/api/rooms/${user._id}`);
       if (response.status === 200) {
-        const conversation_data = await axios.get(`/api/rooms/info/${response.data.conversationId}`);
-        if (conversation_data) {
-          navigate(`/room/${conversation_data.data.conversation._id}`);
+          navigate(`/room/${response.data.conversationId}`);
         }
-      } 
     } catch (error) {
-      console.error("Error fetching private room:", error);
+      toast.error("Error fetching private room:", error);
     }
   };
 
