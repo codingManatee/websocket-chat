@@ -9,7 +9,7 @@ const Conversations = () => {
 			{conversations.map((room, idx) => (
 				<Conversation
 					key={room._id}
-					user={room}
+					conversation={room}
 					emoji={getRandomEmoji()}
 					lastIdx={idx === room.length - 1}
 				/>
