@@ -6,6 +6,7 @@ const Users = () => {
 	const { loading, users } = useGetUsers();
 	return (
 		<div className='py-2 flex flex-col overflow-auto'>
+			<div className="text-white font-bold text-xl px-2 pb-2">Recent</div>
 			{users.map((user, idx) => (
 				<User
 					key={user._id}

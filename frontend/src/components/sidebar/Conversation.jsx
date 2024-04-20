@@ -50,3 +50,4 @@ const Conversation = ({ user, lastIdx, emoji }) => {
 	);
 };
 export default Conversation;
+

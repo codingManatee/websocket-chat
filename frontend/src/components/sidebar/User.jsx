@@ -38,9 +38,9 @@ const User = ({ user, lastIdx, emoji }) => {
 						<img src={user.profilePic} alt='user avatar' />
 					</div>
 				</div>
-				<div className='flex flex-col flex-1'>
+				<div className='flex flex-col flex-1 overflow-hidden'>
 					<div className='flex gap-3 justify-between'>
-						<p className='font-bold text-gray-200'>{user.fullName}</p>
+						<p className='font-bold text-gray-200 truncate w-2/3'>{user.fullName}</p>
 						<span className='text-xl'>{emoji}</span>
 					</div>
 				</div>
