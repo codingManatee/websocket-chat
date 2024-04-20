@@ -7,26 +7,18 @@ const User = ({ user, lastIdx, emoji }) => {
   const { onlineUsers } = useSocketContext();
   const isOnline = onlineUsers.includes(user._id);
 
-  const handleSelectUser = async () => {
-    try {
-      const response = await axios.get(`/api/messages/room/${user._id}`, {
-        headers: {
-          Authorization: `Bearer YOUR_TOKEN_HERE`, // Replace YOUR_TOKEN_HERE with the actual token
-        },
-      });
-      if (response.status === 200) {
-        const conversation = users.find((c) =>
-          c.fullName.toLowerCase().includes(search.toLowerCase())
-        );
-        setSelectedConversation(conversation);
-        // navigate(`/room/${response.data.conversationId}`); // SHOW CONVERSATION BOX INSTEAD
-      } else {
-        console.error("Failed to get the conversation ID");
-      }
-    } catch (error) {
-      console.error("Error fetching private room:", error);
-    }
-  };
+	const handleSelectUser = async () => {
+		try {
+			const response = await axios.get(`/api/rooms/${user._id}`)
+			if (response.status === 200) {
+				navigate(`/room/${response.data.conversationId}`);
+			} else {
+				console.error('Failed to get the conversation ID');
+			}
+		} catch (error) {
+			console.error('Error fetching private room:', error);
+		}
+	};
 
   return (
     <>

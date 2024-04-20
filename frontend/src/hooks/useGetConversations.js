@@ -9,7 +9,7 @@ const useGetConversation = () => {
     const getConversations = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/messages/room");
+        const res = await fetch("/api/rooms");
         const data = await res.json();
         if (data.error) {
           throw new Error(data.error);
