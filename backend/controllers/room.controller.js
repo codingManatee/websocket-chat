@@ -110,7 +110,7 @@ export const joinRoom = async (req, res) => {
       // Successfully added to the room, now navigate to the room
       res.status(200).json({
         message: "Joined and navigating to room",
-        roomId: updatedRoom._id,
+        conversationId: updatedRoom._id,
       });
     }
   } catch (error) {
