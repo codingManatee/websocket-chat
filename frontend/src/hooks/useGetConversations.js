@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useSocketContext } from "../context/SocketContext";
 
-const useGetConversation = () => {
+const useGetConversations = () => {
+  const { socket } = useSocketContext();
   const [loading, setLoading] = useState(false);
   const [conversations, setConversations] = useState([]);
 
@@ -23,8 +25,22 @@ const useGetConversation = () => {
     };
 
     getConversations();
-  }, []);
+
+    // Listen for new room created events and update the conversations list
+    if (socket) {
+      socket.on("newRoomCreated", (newRoom) => {
+        setConversations((prevConversations) => [
+          ...prevConversations,
+          newRoom,
+        ]);
+      });
+
+      return () => {
+        socket.off("newRoomCreated");
+      };
+    }
+  }, [socket]);
 
   return { loading, conversations };
 };
-export default useGetConversation;
+export default useGetConversations;

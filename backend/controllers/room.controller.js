@@ -1,4 +1,5 @@
 import Conversation from "../models/conversation.model.js";
+import { io } from "../socket/socket.js";
 
 export const createRoom = async (req, res) => {
   try {
@@ -9,6 +10,8 @@ export const createRoom = async (req, res) => {
       name,
       participants: uniqueParticipants,
     });
+
+    io.emit("newRoomCreated", conversation);
     res.status(201).json(conversation);
   } catch (error) {
     console.log("Error in createRoom controller: ", error.message);
