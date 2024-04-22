@@ -36,7 +36,7 @@ const MessageContainer = () => {
     if (selectedConversation)
     {
         displayName = selectedConversation.isPrivateRoom ? 
-        selectedConversation.participants.find(participant => participant !== authUser._id) : selectedConversation.name 
+        selectedConversation.participants.find(participant => participant._id !== authUser._id).fullName : selectedConversation.name 
     }
 
 

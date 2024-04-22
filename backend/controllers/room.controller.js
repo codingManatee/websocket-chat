@@ -52,9 +52,14 @@ export const getRoom = async (req, res) => {
     // Find conversation with only these two users
     let conversation = await Conversation.findOne({
       _id: conversationId,
-    });
+    }).populate("participants");
 
-    if (!conversation || !conversation.participants.includes(req.user._id)) {
+    if (
+      !conversation ||
+      !conversation.participants.some((participant) =>
+        participant._id.equals(req.user._id)
+      )
+    ) {
       return res
         .status(404)
         .json({ error: "Conversation not found or access denied" });
