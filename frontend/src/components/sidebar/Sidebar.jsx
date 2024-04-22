@@ -8,7 +8,7 @@ const Sidebar = () => {
 		<div className='border-r border-slate-500 p-4 flex flex-col max-w-[350px]'>
 			<Profile/>
 			<div className='divider'></div>
-			<SearchInput />
+			<SearchInput className='pb-2'/>
 			<Users />
 			<LogoutButton />
 		</div>
