@@ -16,12 +16,13 @@ const SearchInput = () => {
     if (search.length < 3) {
       return toast.error("Search term must be at least 3 characters long");
     }
+    console.log(search)
     const user = users.find((c) =>
       c.fullName.toLowerCase().includes(search.toLowerCase())
     );
 
     try {
-      const response = await axios.get(`/api/rooms/${user._id}`);
+      const response = await axios.post(`/api/rooms/${user._id}`);
       if (response.status === 200) {
         const conversation_data = await axios.get(`/api/rooms/info/${response.data.conversationId}`);
         if (conversation_data) {
