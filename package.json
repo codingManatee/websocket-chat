@@ -3,9 +3,9 @@
     "@headlessui/react": "^1.7.19",
     "axios": "^1.6.8"
   }, "scripts": {
-    "start": "vite start",
-    "build": "vite build",
-    "test": "vite test",
-    "eject": "vite eject"
+    "start": "npm start",
+    "build": "npm build",
+    "test": "npm test",
+    "eject": "npm eject"
   }
 }
