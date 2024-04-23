@@ -3,6 +3,6 @@
     "@headlessui/react": "^1.7.19",
     "axios": "^1.6.8"
   }, "scripts": {
-    "installAll": "concurrently \"npm install\" \"cd backend && go get\" \"cd frontend && npm install\" "
+    "installAll": "concurrently \"npm install\" \"cd backend && npm run server\" \"cd frontend && npm run dev\" "
   }
 }
