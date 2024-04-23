@@ -12,11 +12,10 @@ import connectToMongoDB from "./db/connectToMongoDB.js";
 import { app, server } from "./socket/socket.js";
 import roomRoutes from "./routes/room.routes.js";
 
-const PORT = process.env.PORT || 5001;
-
 const __dirname = path.resolve();
 
 dotenv.config({ path: "./config/config.env" });
+const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
