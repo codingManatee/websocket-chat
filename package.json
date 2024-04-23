@@ -1,5 +1,9 @@
 {
-  "dependencies": {
-    "axios": "^1.6.8"
-  }
+  "scripts": {
+    "installBackend": "cd backend && npm install",
+    "installFrontend": "cd frontend && npm install",
+    "startBackend": "cd backend && npm run start",
+    "startFrontend": "cd frontend && npm run dev",
+    "start": "concurrently \"npm run startBackend\" \"npm run startFrontend\""
+  }  
 }
