@@ -4,7 +4,7 @@
     "axios": "^1.6.8"
   }, "scripts": {
     "start": "npm start",
-    "build": "npm build",
+    "build": "npm run build",
     "test": "npm test",
     "eject": "npm eject"
   }
