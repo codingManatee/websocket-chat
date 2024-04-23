@@ -15,6 +15,7 @@ import roomRoutes from "./routes/room.routes.js";
 const __dirname = path.resolve();
 
 dotenv.config({ path: "./config/config.env" });
+
 const PORT = process.env.PORT || 8080;
 
 app.use(cors());
@@ -26,11 +27,11 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/rooms", roomRoutes);
 
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+// app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+// });
 
 server.listen(PORT, () => {
   connectToMongoDB();
